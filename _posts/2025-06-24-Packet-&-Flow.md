@@ -1,11 +1,13 @@
+# 码流
+
 关于包（packet）和码流（flow）的概念和区别。关于解码后包含xDR id封装和封装的格式。
 
-# 包、码流的概念区别
+## 包、码流的概念区别
 
 | 术语             | 说明                                                                 |
 |------------------|----------------------------------------------------------------------|
 | 数据包（Packet） | 网络通信中的最小单位，比如IP包、TCP包、以太网帧等。                    |
-| 码流（Stream）   | 由多个数据包组成，代表一次完整的通信会话（如一次HTTP请求/响应、一次微信聊天等）。 |
+| 码流（Flow）   | 由多个数据包组成，代表一次完整的通信会话（如一次HTTP请求/响应、一次微信聊天等）。 |
 
 > **Packet**
 > is defined as a segment of data traveling from the sender’s origin to its destination. Individual packets travel from a source address to a destination address and may make hops along the way. Multiple packet segments can combine to create larger messages at the receiving address.
@@ -49,9 +51,9 @@
 | **新增字段** | 无 | 入向接口和IP服务类型（ToS） |
 | **保证唯一性** | 强 | 更强 |
 
-# 原始码流包含xDR的封装
+## 原始码流包含xDR的封装
 
-## 按照帧封装的原始码流格式
+### 按照帧封装的原始码流格式
 
 假设采集一个HTTP请求的原始码流，包含以下数据包：
 
@@ -91,40 +93,4 @@ RAT简写代表终端设备类型？（The RAT-Type Attribute specifies the radi
 |------|--------|--------|
 | 数据包长度 | 通用包头 | 原始信令数据 |
 
-## 封装后通过SDTP协议进行传输
-
-[SDTP](https://github.com/strmrider/SDTP): Secured data (bytes, text, files and objects) transfer internet protocol using a third party certificate authentication server, hybrid encryptions and digital signatures.
-
-The protocol is presentation layer related and serves as an infrastructure for TCP-based application layer protocols, providing data encryption/decryption and serializations.
-
-Hanshake
-
-The handshake performs private and session keys exchange and certificate verification.
-
-Server:
-
-```python
-from . import handshake
-private_key = [SERVER'S PRIVATE KEY]
-network = [WRAPPED SOCKET]
-# without certificate
-session_key = handshake.server_handshake(private_key, network)
-# with a certificate
-certificate = [CERTIFICATE FROM CA SERVER]
-session_key = handshake.server_handshake_cert(private_key, network, certificate)
-```
-
-Client:
-
-```python
-import os
-# encryption key size (in bytes)
-KEY_SIZE = 16
-session_key = os.urandom(KEY_SIZE)
-network = [WRAPPED SOCKET]
-# without certificate
-handshake.client_handshake(newtwork, session_key)
-# with a certificate
-ca_public_key = [ca server public key]
-handshake.client_handshake_cert(session_key, network, ca_public_key)
-```
+### 封装后通过SDTP协议进行传输

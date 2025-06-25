@@ -1,7 +1,8 @@
 title: 崔淮冰的每天笔记
 author: 崔淮冰
-email: 
+email: huaibingcui@gmail.com
 description: > # this means to ignore newlines until "twitter_username:" 
+  我计划每天分享一个学习经验或教训在这里。目标是激励并记录持续成长。
 # Here is my individual platform where
 # I share one learning experience, insight, or lesson every single day. 
 # The goal is to
@@ -9,7 +10,7 @@ description: > # this means to ignore newlines until "twitter_username:"
 
 # social links
 # twitter_username: jekyllrb
-# github_username:  jekyll
+github_username:  jekyll
 rss: rss
 # dribbble_username: jekyll
 # facebook_username: jekyll

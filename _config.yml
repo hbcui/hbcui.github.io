@@ -1,11 +1,11 @@
-title: My Daily Blogs
-author: CUI H.B.
+title: 崔淮冰的每天笔记
+author: 崔淮冰
 email: 
-description: > # this means to ignore newlines until "twitter_username:"
-  Here is my individual platform where
-  I share one learning experience, insight, or lesson every single day. 
-  The goal is to
-  inspire continuous growth and document my journey of knowledge.
+description: > # this means to ignore newlines until "twitter_username:" 
+# Here is my individual platform where
+# I share one learning experience, insight, or lesson every single day. 
+# The goal is to
+# inspire continuous growth and document my journey of knowledge.
 
 # social links
 # twitter_username: jekyllrb
@@ -28,7 +28,7 @@ description: > # this means to ignore newlines until "twitter_username:"
 #   instance: example.com
 
 
-show_excerpts: false # set to true to show excerpts on the homepage
+show_excerpts: true # abstract, set to true to show excerpts on the homepage
 
 # Minima date format
 # refer to http://shopify.github.io/liquid/filters/date/ if you want to customize this

@@ -10,7 +10,7 @@ description: > # this means to ignore newlines until "twitter_username:"
 # social links
 # twitter_username: jekyllrb
 # github_username:  jekyll
-# rss: rss
+rss: rss
 # dribbble_username: jekyll
 # facebook_username: jekyll
 # flickr_username: jekyll
@@ -28,12 +28,13 @@ description: > # this means to ignore newlines until "twitter_username:"
 #   instance: example.com
 
 
-show_excerpts: true # abstract, set to true to show excerpts on the homepage
+show_excerpts: true # abstract in home page, set to true to show excerpts on the homepage
 
 # Minima date format
 # refer to http://shopify.github.io/liquid/filters/date/ if you want to customize this
 minima:
-  date_format: "%b %-d, %Y"
+  date_format: "%Y年%m月%d日"
+# date_format: "%b %-d, %Y"
 
 # If you want to link only specific pages in your header, uncomment
 # this and add the path to the pages in order as they should show up

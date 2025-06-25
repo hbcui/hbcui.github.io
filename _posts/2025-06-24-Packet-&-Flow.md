@@ -1,0 +1,130 @@
+关于包（packet）和码流（flow）的概念和区别。关于解码后包含xDR id封装和封装的格式。
+
+# 包、码流的概念区别
+
+| 术语             | 说明                                                                 |
+|------------------|----------------------------------------------------------------------|
+| 数据包（Packet） | 网络通信中的最小单位，比如IP包、TCP包、以太网帧等。                    |
+| 码流（Stream）   | 由多个数据包组成，代表一次完整的通信会话（如一次HTTP请求/响应、一次微信聊天等）。 |
+
+> **Packet**
+> is defined as a segment of data traveling from the sender’s origin to its destination. Individual packets travel from a source address to a destination address and may make hops along the way. Multiple packet segments can combine to create larger messages at the receiving address.
+
+> **Flow**
+> is defined as a sequence of packets that share seven attributes. Once any of the attributes change, a new flow begins.
+> These seven attributes are:
+> 
+> 1. Incoming traffic interface
+> 2. Source IP address
+> 3. Destination IP address
+> 4. IP protocol
+> 5. Source port
+> 6. Destination port
+> 7. IP type of service
+
+五元组（5-Tuple）属性：
+
+1. **源IP地址（Source IP address）**  
+2. **目的IP地址（Destination IP address）**  
+3. **IP协议类型（IP protocol）**  
+4. **源端口号（Source port）**  
+5. **目的端口号（Destination port）**
+
+七元组（7-Tuple）包含：
+
+1. **入向接口（Incoming traffic interface）**  
+2. **源IP地址（Source IP address）**  
+3. **目的IP地址（Destination IP address）**  
+4. **IP协议类型（IP protocol）**（如TCP、UDP、ICMP）  
+5. **源端口号（Source port）**  
+6. **目的端口号（Destination port）**  
+7. **IP服务类型（IP Type of Service, ToS）**
+
+五元组与七元组的区别在下表。
+
+| 对比项 | 五元组（5-Tuple） | 七元组（7-Tuple） |
+|----------|------------------|------------------|
+| **定义** | 用于唯一标识一个网络连接或会话 | 在五元组基础上增加两个字段 |
+| **字段数量** | 5个 | 7个 |
+| **新增字段** | 无 | 入向接口和IP服务类型（ToS） |
+| **保证唯一性** | 强 | 更强 |
+
+# 原始码流包含xDR的封装
+
+## 按照帧封装的原始码流格式
+
+假设采集一个HTTP请求的原始码流，包含以下数据包：
+
+* TCP 三次握手（3个包）
+* HTTP GET 请求（1个包）
+* HTTP 200 OK 响应（1个包）
+
+这5个包会组成一个完整的原始码流。然后把这个码流封装为一个帧结构，如下所示：
+
+
+| 定长度 | 不定长度 |
+|--------| -----------|
+| Frame Header (12字节)   | Frame Payload (包含上述5个包的原始数据)     |
+
+帧头Frame Header包含：
+
+| 字段 | 长度（字节/byte） |  
+|-------|--------------|
+| RAT | 1字节 |
+| Interface | 1字节 |
+| 包头总条目数 | 2字节 |
+| 总长度？ | 2字节 |
+| XDR ID | 16（0x01）字节 |
+
+RAT简写代表终端设备类型？（The RAT-Type Attribute specifies the radio access technology type.）。
+
+帧载荷（Frame Payload），也就是原始数据包的可用内容：
+
+| 字段 | 长度（字节/byte） |  
+|-------|--------------|
+| 载荷1 | 变长（不定长度） |
+| 载荷2 | 变长（不定长度） |
+
+每个帧的格式。
+
+| 2字节   | 12字节 | 变长 |
+|------|--------|--------|
+| 数据包长度 | 通用包头 | 原始信令数据 |
+
+## 封装后通过SDTP协议进行传输
+
+[SDTP](https://github.com/strmrider/SDTP): Secured data (bytes, text, files and objects) transfer internet protocol using a third party certificate authentication server, hybrid encryptions and digital signatures.
+
+The protocol is presentation layer related and serves as an infrastructure for TCP-based application layer protocols, providing data encryption/decryption and serializations.
+
+Hanshake
+
+The handshake performs private and session keys exchange and certificate verification.
+
+Server:
+
+```python
+from . import handshake
+private_key = [SERVER'S PRIVATE KEY]
+network = [WRAPPED SOCKET]
+# without certificate
+session_key = handshake.server_handshake(private_key, network)
+# with a certificate
+certificate = [CERTIFICATE FROM CA SERVER]
+session_key = handshake.server_handshake_cert(private_key, network, certificate)
+```
+
+Client:
+
+```python
+import os
+# encryption key size (in bytes)
+KEY_SIZE = 16
+session_key = os.urandom(KEY_SIZE)
+network = [WRAPPED SOCKET]
+# without certificate
+handshake.client_handshake(newtwork, session_key)
+# with a certificate
+ca_public_key = [ca server public key]
+handshake.client_handshake_cert(session_key, network, ca_public_key)
+```

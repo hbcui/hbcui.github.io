@@ -8,6 +8,13 @@ description: > # this means to ignore newlines until "twitter_username:"
 # The goal is to
 # inspire continuous growth and document my journey of knowledge.
 
+# URL 设置
+# 如果你的网站不是部署在域名根目录，请设置 baseurl
+# 例如：如果你的网站是 https://username.github.io/repository-name/
+# 那么 baseurl 应该是 "/repository-name"
+baseurl: "" # 如果部署在根目录，保持为空
+url: "https://hbcui.github.io" # 你的网站 URL，例如 "https://hbcui.github.io"
+
 # social links
 # twitter_username: jekyllrb
 github_username:  jekyll

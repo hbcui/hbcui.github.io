@@ -2,7 +2,8 @@ title: 崔淮冰的每天笔记
 author: 崔淮冰
 email: huaibingcui@gmail.com
 description: > # this means to ignore newlines until "twitter_username:" 
-  我计划每天分享一个学习经验或教训在这里。目标是激励并记录持续成长。
+  GitHub官方提供的静态网站托管服务GitHub Pages搭建这个Blogs网站。
+  通过Jekyll静态网站生成器，在Markdown写作后自动生成HTML页面。
 # Here is my individual platform where
 # I share one learning experience, insight, or lesson every single day. 
 # The goal is to

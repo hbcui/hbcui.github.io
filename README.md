@@ -203,6 +203,22 @@ To display post-excerpts on the Home Page, simply add the following to your `_co
 show_excerpts: true
 ```
 
+### [Math](https://zjuwhw.github.io/2017/06/04/MathJax.html)
+
+insert the code in the `_includes/head.html`
+
+```
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    processEscapes: true
+  }
+});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+```
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/jekyll/minima. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.

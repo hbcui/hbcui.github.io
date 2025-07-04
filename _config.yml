@@ -2,7 +2,7 @@ title: 每天学习笔记
 author: 崔淮冰
 email: huaibingcui@gmail.com
 description: > # this means to ignore newlines until "twitter_username:" 
-  用GitHub官方提供的静态网站托管服务GitHub Pages搭建这个网络日志，并通过流行的静态网站生成器Jekyll在Markdown写作后自动生成页面。
+  用GitHub官方提供的静态网站托管服务GitHub Pages搭建这个网络日志，并通过流行的静态网站生成器Jekyll在Markdown写作后自动生成HTML。
 # Here is my individual platform where
 # I share one learning experience, insight, or lesson every single day. 
 # The goal is to

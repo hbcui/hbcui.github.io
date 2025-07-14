@@ -48,6 +48,8 @@ chmod +x ./shell/run_pretrain_train.sh && ./shell/run_pretrain_train.sh
 
 ### 日志
 
+09:08:50 -> 09:29:01
+
 ```
 [INFO] [2025-07-11 09:08:50,027] [log_support:log_message]: [line:99] [INFO] Reconstructing vocab dict...
 [INFO] [2025-07-11 09:08:50,203] [log_support:log_message]: [line:99] [INFO] Building model...

@@ -37,7 +37,7 @@
         tokenizer_ = 'raw_bytes'
 ```
 
-#### 可选是否包含全部头部的payload
+#### 可选是否包含头部的payload
 
 增加payload_mode，下面是在`stage1_traffic_pcap_download_and_process.py`中的修改。
 
@@ -80,8 +80,8 @@ def parse_packet(packet, payload_mode='payload'):
     # 根据配置获取payload字节
     save_data = ''
     if payload_header:
-        # 保存整个原始包（含数据链路层头部）
-        save_data = packet.hex()
+        # 只保存IP头部+传输层头部+payload（不含Ethernet头）
+        save_data = ip.pack().hex()
     else:
         # 只保存payload
         save_data = trans_layer.data.hex()
@@ -113,11 +113,11 @@ case $SCRIPT_TYPE in
 ./run.sh stage1
 ```
 
-查看CSV数据, 从以太网头部开始。符合要求！！
+查看CSV数据, 从ip头部开始。符合要求！！
 
 ```
 five_tuple,app_name,app_version,protocol,flow_len,packet_num,flow_data
-221.177.16.132:2152_221.177.16.227:2152_UDP,WeChat,1.1.1,GTP-U,1341,9,3c4a927af1ee104a1f6bd4560800450000644f7800003e115047ddb110e3ddb11
+192.168.0.3:53265_211.152.118.11:80_TCP,WeChat,1.1.1,HTTP,603,2,4500018b1d5640008006d1c7c0a80003d398760b............
 ```
 
 #### 解析五元组流的协议（注意这里主要应用层，不是传输层协议）
@@ -134,7 +134,61 @@ five_tuple,app_name,app_version,protocol,flow_len,packet_num,flow_data
 
 ```
 five_tuple,app_name,app_version,protocol,flow_len,packet_num,flow_data
-221.177.16.132:2152_221.177.16.227:2152_UDP,WeChat,1.1.1,GTP-U,1341,9,3c4a927af1ee104a1f6bd4560800450000644f7800003e115047ddb110e3ddb11
+221.177.16.132:2152_221.177.16.227:2152_UDP,WeChat,1.1.1,GTP-U,1341,9,450000644f7800003e115047ddb110e3ddb11
+```
+
+详细的端口和特征规则看新创建的解析器`processing/protocol_parser.py`。
+
+```python
+......
+class ProtocolParser:
+    def __init__(self):
+        # 只保留常规协议端口
+        self.port_protocols = {
+            21: 'FTP', 22: 'SSH', 23: 'TELNET', 25: 'SMTP', 53: 'DNS',
+            80: 'HTTP', 110: 'POP3', 143: 'IMAP', 443: 'HTTPS', 993: 'IMAPS',
+            995: 'POP3S', 8080: 'HTTP', 8443: 'HTTPS'
+        }
+        # 只保留常规协议特征
+        self.protocol_patterns = {
+            'HTTP': [b'GET ', b'POST ', b'PUT ', b'DELETE ', b'HEAD ', b'HTTP/'],
+            'HTTPS': [b'\x16\x03', b'\x17\x03'],
+            'FTP': [b'USER ', b'PASS ', b'QUIT ', b'220 ', b'331 '],
+            'SMTP': [b'HELO ', b'MAIL ', b'RCPT ', b'DATA ', b'220 ', b'250 '],
+            'POP3': [b'USER ', b'PASS ', b'QUIT ', b'+OK ', b'-ERR '],
+            'IMAP': [b'LOGIN ', b'SELECT ', b'FETCH ', b'* OK ', b'* NO '],
+            'DNS': [b'\x00\x01', b'\x00\x02', b'\x00\x05', b'\x00\x06'],
+            'SSH': [b'SSH-'],
+            'TELNET': [b'\xff\xfd', b'\xff\xfe', b'\xff\xff'],
+        }
+......
+```
+
+之后，在`processing/parse_pcap.py`原有解析基础上加入上面的新解析器。
+
+```python
+        # ========== 使用新的协议解析器解析应用层协议 ==========
+        app_layer = 'UNKNOWN'
+        try:
+            # 首先尝试根据端口检测协议
+            app_layer = protocol_parser.detect_protocol_by_port(port_dst)
+            if app_layer == 'UNKNOWN' or app_layer is None:
+                app_layer = protocol_parser.detect_protocol_by_port(port_src)
+            # 如果端口检测失败，尝试根据payload检测
+            if app_layer == 'UNKNOWN' or app_layer is None:
+                app_layer = protocol_parser.detect_protocol_by_payload(trans_layer.data)
+            # 如果还是UNKNOWN，使用原有的解析方法作为备选
+            if app_layer == 'UNKNOWN':
+                if protocol == 'UDP':
+                    app_layer = parse_dns(trans_layer.data)
+                else:
+                    app_layer, sni = parse_tcp_payload(trans_layer.data)
+        except Exception as e:
+            # 如果新解析器出错，使用原有方法
+            if protocol == 'UDP':
+                app_layer = parse_dns(trans_layer.data)
+            else:
+                app_layer, sni = parse_tcp_payload(trans_layer.data)
 ```
 
 #### 数据集划分

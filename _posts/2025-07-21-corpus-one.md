@@ -124,7 +124,7 @@ five_tuple,app_name,app_version,protocol,flow_len,packet_num,flow_data
 
 首先，解析**应用层**的协议。有2种方法：
 
-* 特征加上端口方案
+* 特征加上端口方案(选择这个)
 * 集成库(性能差)
     * nDPI（C库，支持Python绑定）：自动识别数百种协议，准确率高
     * libprotoident（C库）：基于payload和统计特征自动识别

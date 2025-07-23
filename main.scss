@@ -24,5 +24,8 @@
 }
 
 body {
-    font-family: "STSong", "HTSong", "华文宋体", "SimSun", "宋体", "Times New Roman", Times, serif !important;
+    font-family: "Times New Roman", Times, serif;
+}
+:lang(zh), :lang(zh-CN), :lang(zh-TW), :lang(zh-HK), :lang(zh-Hans), :lang(zh-Hant) {
+    font-family: "华文宋体", "STSong", "HTSong", "SimSun", "宋体", serif;
 }

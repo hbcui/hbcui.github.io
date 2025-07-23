@@ -3,3 +3,11 @@
 ---
 
 @import "minima";
+
+.site-header, .site-footer {
+    background: #222;
+    color: #fff;
+  }
+.site-header a, .site-footer a {
+    color: #fff;
+  }

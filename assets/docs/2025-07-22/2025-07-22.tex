@@ -1,12 +1,12 @@
 \documentclass{article}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% header
+% header information
 \title{加强识别规则，增加统计指标}
 \author{}
 \renewcommand{\today}{\number\year--\number\month--\number\day\thanks{年、月、日。}}
 \date{\today}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% math support
+% math packages
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{amsthm}
@@ -15,24 +15,23 @@
 \usepackage{amsthm}
 \usepackage{amscd}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% font setting
-% default computer modern for english.
-\usepackage{xeCJK}  % xeCJK宏包专用于XeLaTeX下中文支持，能自动识别中英文并分别设置字体。
+% font settings
+% Default: Computer Modern for English.
+\usepackage{xeCJK}  % xeCJK package for Chinese support in XeLaTeX; automatically distinguishes Chinese and English and sets fonts separately.
 \setCJKmainfont[
     BoldFont={STSong},
     ItalicFont={FangSong}
-]{STSong}  % 设置中文主字体为宋体，这样正文里的中文会自动用楷体显示。
+]{STSong}  % Set main Chinese font to STSong (Songti); Chinese text in the body will use this font.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% space setting
+% paragraph indentation
 \setlength{\parindent}{0pt}
-% 页边距设置
+% page margin settings
 \usepackage[a4paper, left=2.5cm, right=2.5cm, top=3cm, bottom=3cm]{geometry}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 \maketitle
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 协议识别规则加强

@@ -4,6 +4,10 @@ YAML dashes. the dashes are enough.
 
 @import "minima";
 
+.site-header {
+  border-top: none !important;
+}
+
 .site-header, .site-footer {
     background: #000 !important;
     color: #fff !important;
@@ -19,3 +23,4 @@ YAML dashes. the dashes are enough.
 .site-footer a, .site-footer.h-card a {
     color: #fff !important;
 }
+

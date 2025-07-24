@@ -1,8 +1,10 @@
 ---
-title: 按分类归档
+title: Archive
 layout: page
 permalink: /archive-category/
 ---
+
+<p><a href="/archive-date/">[Sort by Date]</a></p>
 
 {%- assign posts = site.posts | sort: "date" | reverse -%}
 {%- assign categories = "" | split: "" -%}

@@ -1,5 +1,5 @@
 ---
-title: 关于
+title: About/关于
 layout: page
 permalink: /about-cn/
 ---

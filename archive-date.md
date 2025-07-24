@@ -1,5 +1,5 @@
 ---
-title: Archive
+title: Archive/归档
 layout: page
 permalink: /archive-date/
 ---

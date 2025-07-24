@@ -1,12 +1,9 @@
-title: Blogs 日志
-author: 崔淮冰
+title: Blogs
+author: CUI HuaiBing
 email: huaibingcui@gmail.com
 description: > # this means to ignore newlines until "twitter_username:" 
-  用GitHub官方的静态网站托管服务GitHub Pages搭建这个网络日志，并通过流行的静态网站生成器Jekyll在Markdown写作后自动生成HTML。
-# Here is my individual platform where
-# I share one learning experience, insight, or lesson every single day. 
-# The goal is to
-# inspire continuous growth and document my journey of knowledge.
+  This blog is built with GitHub Pages, the official static site hosting service from GitHub, and uses the popular static site generator Jekyll to automatically generate HTML from Markdown writing.
+# 用GitHub官方的静态网站托管服务GitHub Pages搭建这个网络日志，并通过流行的静态网站生成器Jekyll在Markdown写作后自动生成HTML。
 
 # URL 设置
 # 如果你的网站不是部署在域名根目录，请设置 baseurl

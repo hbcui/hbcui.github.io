@@ -4,7 +4,7 @@ layout: page
 permalink: /about-en/
 ---
 
-<p><a href="/about-cn/">[汉文]</a></p>
+<p><a href="/about-cn/">[中文]</a></p>
 
 Author: HuaiBing Cui  
 Email: huaibingcui@gmail.com  

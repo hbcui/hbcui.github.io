@@ -4,6 +4,8 @@ layout: page
 permalink: /about/
 ---
 
+<p><a href="/about-en/">[English]</a></p>
+
 作者：崔淮冰  
 邮箱：huaibingcui@gmail.com  
 

@@ -1,4 +1,4 @@
-title: Blogs
+title: Blogs 日志
 author: 崔淮冰
 email: huaibingcui@gmail.com
 description: > # this means to ignore newlines until "twitter_username:" 
@@ -47,7 +47,7 @@ minima:
 # If you want to link only specific pages in your header, uncomment
 # this and add the path to the pages in order as they should show up
 header_pages:
- - archive.md
+ - archive-date.md
  - about.md
 
 # Build settings

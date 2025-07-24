@@ -1,5 +1,5 @@
 ---
-title: 归档
+title: Archive
 layout: page
 permalink: /archive/
 ---
@@ -8,8 +8,8 @@ permalink: /archive/
 {%- assign by_category = sort == 'category' -%}
 
 <p>
-  <a href="/archive/">Sort by date</a> | 
-  <a href="/archive/?sort=category">Sort by category</a>
+  <a href="/archive/">Sort by Date</a> | 
+  <a href="/archive/?sort=category">Sort by Category</a>
 </p>
 
 {%- if by_category -%}

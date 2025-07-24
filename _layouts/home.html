@@ -11,6 +11,7 @@ layout: default
 
   {%- if site.posts.size > 0 -%}
     <!-- <h2 class="post-list-heading">{{ page.list_title | default: "Posts" }}</h2> -->
+    {%- comment -%}
     <ul class="post-list">
       {%- for post in site.posts -%}
       <li>
@@ -23,6 +24,25 @@ layout: default
         </h3>
         {%- if site.show_excerpts -%}
           {{ post.excerpt }}
+        {%- endif -%}
+      </li>
+      {%- endfor -%}
+    </ul>
+    {%- endcomment -%}
+    <ul class="post-list">
+      {%- for post in site.posts -%}
+      <li>
+        {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+        <div style="display: flex; align-items: center;">
+          <h3 style="margin: 0; flex: 1 1 auto;">
+            <a class="post-link" href="{{ post.url | relative_url }}">
+              {{ post.title | escape }}
+            </a>
+          </h3>
+          <span class="post-meta" style="white-space: nowrap;">{{ post.date | date: date_format }}</span>
+        </div>
+        {%- if site.show_excerpts -%}
+          <div>{{ post.excerpt }}</div>
         {%- endif -%}
       </li>
       {%- endfor -%}

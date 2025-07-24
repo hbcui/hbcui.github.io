@@ -1,7 +1,7 @@
 ---
 title: About
 layout: page
-permalink: /about/
+permalink: /about-en/
 ---
 
 <p><a href="/about-cn/">[汉文]</a></p>

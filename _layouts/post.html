@@ -9,7 +9,7 @@ layout: default
       <!-- <p class="post-meta">{{ page.date | date: date_format }}</p> -->
       <div style="display: flex; align-items: center;">
         <h1 class="post-title" style="margin: 0; flex: 1 1 auto;">{{ page.title | escape }}</h1>
-        <span class="post-meta" style="white-space: nowrap;">{{ page.date | date: date_format }}</span>
+        <span class="post-meta" style="white-space: nowrap;">{{ page.date | date: "%Y-%m-%d" }}</span>
       </div>
     {%- endif -%}
     {%- if page.author -%}

@@ -4,7 +4,7 @@ layout: page
 permalink: /archive-category/
 ---
 
-<p><a href="/archive-date/">[Sort by Date]</a></p>
+<p><a href="/archive-date/">[Sort by Date/按日排列]</a></p>
 
 {%- assign posts = site.posts | sort: "date" | reverse -%}
 {%- assign categories = "" | split: "" -%}

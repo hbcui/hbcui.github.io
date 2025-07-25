@@ -6,6 +6,9 @@ permalink: /archive-category/
 
 <p><a href="/archive-date/">[Sort by Date/按日排列]</a></p>
 
+<p>Below are all posts sorted by category.<br/>
+下面的所有文章按分类排列。</p>
+
 {%- assign posts = site.posts | sort: "date" | reverse -%}
 {%- assign categories = "" | split: "" -%}
 {%- for post in posts -%}

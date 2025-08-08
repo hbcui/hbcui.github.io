@@ -17,6 +17,15 @@
 ```
 
 ```bash
+(.venv) [root@datanode62 corpus]# head -5 /data1/chatPcap_data/processed/pcap_2022_03/target/dataset_split.csv
+pcap_path,csv_path,split
+/data1/chatPcap_data/pcap_2022_03/2022-03-05/com.ymt360.app.mass/V6.21.40/yi.mu.tian_com.ymt360.app.mass_V6.21.40_2022.03.04.13.53.16_200_filter.pcap,/data1/chatPcap_data/processed/pcap_2022_03/target/V6.21.40.csv,train
+/data1/chatPcap_data/pcap_2022_03/2022-03-05/com.ymt360.app.mass/V6.21.40/yi.mu.tian_com.ymt360.app.mass_V6.21.40_2022.03.04.12.19.05_200_filter.pcap,/data1/chatPcap_data/processed/pcap_2022_03/target/V6.21.40.csv,train
+/data1/chatPcap_data/pcap_2022_03/2022-03-05/com.ymt360.app.mass/V6.21.40/yi.mu.tian_com.ymt360.app.mass_V6.21.40_2022.03.04.12.50.17_200_filter.pcap,/data1/chatPcap_data/processed/pcap_2022_03/target/V6.21.40.csv,train
+/data1/chatPcap_data/pcap_2022_03/2022-03-05/com.ymt360.app.mass/V6.21.40/yi.mu.tian_com.ymt360.app.mass_V6.21.40_2022.03.04.14.27.07_200_filter.pcap,/data1/chatPcap_data/processed/pcap_2022_03/target/V6.21.40.csv,train
+```
+
+```bash
 (.venv) [root@datanode62 corpus]# du -sh /data1/chatPcap_data/processed/pcap_2022_03/* && ls -lh /data1/chatPcap_data/processed/pcap_2022_03/csv/
 65G     /data1/chatPcap_data/processed/pcap_2022_03/csv
 11M     /data1/chatPcap_data/processed/pcap_2022_03/target

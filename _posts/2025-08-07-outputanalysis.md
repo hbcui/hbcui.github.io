@@ -17,15 +17,6 @@
 ```
 
 ```bash
-(.venv) [root@datanode62 corpus]# head -5 /data1/chatPcap_data/processed/pcap_2022_03/target/dataset_split.csv
-pcap_path,csv_path,split
-/data1/chatPcap_data/pcap_2022_03/2022-03-05/com.ymt360.app.mass/V6.21.40/yi.mu.tian_com.ymt360.app.mass_V6.21.40_2022.03.04.13.53.16_200_filter.pcap,/data1/chatPcap_data/processed/pcap_2022_03/target/V6.21.40.csv,train
-/data1/chatPcap_data/pcap_2022_03/2022-03-05/com.ymt360.app.mass/V6.21.40/yi.mu.tian_com.ymt360.app.mass_V6.21.40_2022.03.04.12.19.05_200_filter.pcap,/data1/chatPcap_data/processed/pcap_2022_03/target/V6.21.40.csv,train
-/data1/chatPcap_data/pcap_2022_03/2022-03-05/com.ymt360.app.mass/V6.21.40/yi.mu.tian_com.ymt360.app.mass_V6.21.40_2022.03.04.12.50.17_200_filter.pcap,/data1/chatPcap_data/processed/pcap_2022_03/target/V6.21.40.csv,train
-/data1/chatPcap_data/pcap_2022_03/2022-03-05/com.ymt360.app.mass/V6.21.40/yi.mu.tian_com.ymt360.app.mass_V6.21.40_2022.03.04.14.27.07_200_filter.pcap,/data1/chatPcap_data/processed/pcap_2022_03/target/V6.21.40.csv,train
-```
-
-```bash
 (.venv) [root@datanode62 corpus]# du -sh /data1/chatPcap_data/processed/pcap_2022_03/* && ls -lh /data1/chatPcap_data/processed/pcap_2022_03/csv/
 65G     /data1/chatPcap_data/processed/pcap_2022_03/csv
 11M     /data1/chatPcap_data/processed/pcap_2022_03/target
@@ -34,6 +25,19 @@ total 65G
 -rw-r--r-- 1 root root 20G Aug  7 15:14 training.csv
 -rw-r--r-- 1 root root 22G Aug  7 18:14 validation.csv
 ```
+
+划分数据集。
+
+```bash
+(.venv) [root@datanode62 corpus]# head -5 /data1/chatPcap_data/processed/pcap_2022_03/target/dataset_split.csv
+pcap_path,csv_path,split
+/data1/chatPcap_data/pcap_2022_03/2022-03-05/com.ymt360.app.mass/V6.21.40/yi.mu.tian_com.ymt360.app.mass_V6.21.40_2022.03.04.13.53.16_200_filter.pcap,/data1/chatPcap_data/processed/pcap_2022_03/target/V6.21.40.csv,train
+/data1/chatPcap_data/pcap_2022_03/2022-03-05/com.ymt360.app.mass/V6.21.40/yi.mu.tian_com.ymt360.app.mass_V6.21.40_2022.03.04.12.19.05_200_filter.pcap,/data1/chatPcap_data/processed/pcap_2022_03/target/V6.21.40.csv,train
+/data1/chatPcap_data/pcap_2022_03/2022-03-05/com.ymt360.app.mass/V6.21.40/yi.mu.tian_com.ymt360.app.mass_V6.21.40_2022.03.04.12.50.17_200_filter.pcap,/data1/chatPcap_data/processed/pcap_2022_03/target/V6.21.40.csv,train
+/data1/chatPcap_data/pcap_2022_03/2022-03-05/com.ymt360.app.mass/V6.21.40/yi.mu.tian_com.ymt360.app.mass_V6.21.40_2022.03.04.14.27.07_200_filter.pcap,/data1/chatPcap_data/processed/pcap_2022_03/target/V6.21.40.csv,train
+```
+
+五元组流的协议的分布情况。
 
 ```bash
 echo "=== 训练集协议分布 ===" && cut -d',' -f4 /data1/chatPcap_data/processed/pcap_2022_03/csv/training.csv | tail -n +2 | sort | uniq -c | sort -nr
@@ -65,6 +69,8 @@ echo "=== 测试集协议分布 ===" && cut -d',' -f4 /data1/chatPcap_data/proce
      44 GTP-U
 ```
 
+流数统计。
+ 
 ```bash
 (.venv) [root@datanode62 corpus]# echo "=== 总体统计 ===" && echo "训练集总流数: $(($(wc -l < /data1/chatPcap_data/processed/pcap_2022_03/csv/training.csv) - 1))" && echo "验证集总流数: $(($(wc -l < /data1/chatPcap_data/processed/pcap_2022_03/csv/validation.csv) - 1))" && echo "测试集总流数: $(($(wc -l < /data1/chatPcap_data/processed/pcap_2022_03/csv/testing.csv) - 1))"
 === 总体统计 ===

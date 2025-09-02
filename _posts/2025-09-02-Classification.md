@@ -1,4 +1,4 @@
-README下游任务涉诈二分类（0|1：normal|defraud）的微调训练。
+README下游任务涉诈二分类（0/1：normal/defraud）的微调训练。
 
 ## 设计思路
 

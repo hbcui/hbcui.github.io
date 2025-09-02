@@ -42,20 +42,56 @@ weighted avg     0.9539    0.9533    0.9534      3553
 
 ### 可视化（tensorboard）
 
+Train/BatchLoss
+tag: Train/BatchLoss
+
 ![]({{ "assets/images/2025-09-02/train1.png" | relative_url }})
+
+Train/EpochAccuracy
+tag: Train/EpochAccuracy
 
 ![]({{ "assets/images/2025-09-02/train2.png" | relative_url }})
 
+Train/EpochLoss
+tag: Train/EpochLoss
+
 ![]({{ "assets/images/2025-09-02/train3.png" | relative_url }})
+
+Train/LearningRate
+tag: Train/LearningRate
 
 ![]({{ "assets/images/2025-09-02/train4.png" | relative_url }})
 
+Val/EpochAccuracy
+tag: Val/EpochAccuracy
+
 ![]({{ "assets/images/2025-09-02/val1.png" | relative_url }})
+
+
+Val/EpochLoss
+tag: Val/EpochLoss
 
 ![]({{ "assets/images/2025-09-02/val2.png" | relative_url }})
 
+
+
+Val/F1Score
+tag: Val/F1Score
+
 ![]({{ "assets/images/2025-09-02/val3.png" | relative_url }})
+
+
+Val/Precision
+tag: Val/Precision
 
 ![]({{ "assets/images/2025-09-02/val4.png" | relative_url }})
 
+Val/Recall
+tag: Val/Recall
+
 ![]({{ "assets/images/2025-09-02/val5.png" | relative_url }})
+
+
+
+
+

@@ -42,6 +42,20 @@ weighted avg     0.9539    0.9533    0.9534      3553
 
 ### 可视化（tensorboard）
 
-![]({{ "assets/images/2025-09-02/2025-09-02_09-38.png" | relative_url }})
+![]({{ "assets/images/2025-09-02/train1.png" | relative_url }})
 
-![]({{ "assets/images/2025-09-02/2025-09-02_09-39.png" | relative_url }})
+![]({{ "assets/images/2025-09-02/train2.png" | relative_url }})
+
+![]({{ "assets/images/2025-09-02/train3.png" | relative_url }})
+
+![]({{ "assets/images/2025-09-02/train4.png" | relative_url }})
+
+![]({{ "assets/images/2025-09-02/val1.png" | relative_url }})
+
+![]({{ "assets/images/2025-09-02/val2.png" | relative_url }})
+
+![]({{ "assets/images/2025-09-02/val3.png" | relative_url }})
+
+![]({{ "assets/images/2025-09-02/val4.png" | relative_url }})
+
+![]({{ "assets/images/2025-09-02/val5.png" | relative_url }})
